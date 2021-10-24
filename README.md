@@ -14,6 +14,7 @@ Backend
 - ts-node-dev
 
 Frontend
+- ReactJS
 - Typescript
 - CSS modules
 - Vite
