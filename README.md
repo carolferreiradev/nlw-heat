@@ -21,3 +21,15 @@ Frontend
 - Sass
 - Sweetalert2
 - Axios
+
+Mobile
+- React Native
+- Axios
+- Expo
+- Moti
+- Socket.io
+
+Elixir
+- Phoenix
+- Ecto
+- Quantum
