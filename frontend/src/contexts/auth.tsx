@@ -50,14 +50,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
       localStorage.setItem("@dowhile:token", token);
 
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      
+
       setUser(user);
+      Swal.fire({
+        title: "Login efetuado com sucesso",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
+      });
     } catch (error) {
-      await MySwal.fire({
-        title: "",
-        html: <i>Ocorreu um erro ao tentar logar na aplicação.</i>,
+      Swal.fire({
+        title: "Ocorreu um erro ao tentar efetuar o login",
         icon: "error",
-        timer: 4000,
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
       });
     }
   }
@@ -66,18 +74,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       setUser(null);
       localStorage.removeItem("@dowhile:token");
-      await MySwal.fire({
-        title: "",
-        html: <i>Logout show</i>,
+      Swal.fire({
+        title: "Logout efetuado com sucesso",
         icon: "success",
-        timer: 4000,
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
       });
     } catch (error) {
-      await MySwal.fire({
-        title: "",
-        html: <i>Ocorreu um erro ao tentar sair da aplicação.</i>,
+      Swal.fire({
+        title: "Ocorreu um erro ao tentar efetuar o logout",
         icon: "error",
-        timer: 4000,
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
       });
     }
   }

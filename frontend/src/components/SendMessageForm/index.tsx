@@ -4,19 +4,38 @@ import { AuthContext } from "../../contexts/auth";
 import { api } from "../../services/api";
 import styles from "./styles.module.scss";
 
+import Swal from "sweetalert2";
+
 export function SendMessageForm() {
   const { user, signOut } = useContext(AuthContext);
   const [message, setMessage] = useState("");
 
   async function handleSendMessage(event: FormEvent) {
-    event.preventDefault();
-    if (!message.trim()) {
-      return;
+    try {
+      event.preventDefault();
+      if (!message.trim()) {
+        return;
+      }
+
+      await api.post("messages", { message });
+
+      setMessage("");
+      Swal.fire({
+        title: "Mensagem enviada com sucesso.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Ocorreu um erro ao tentar enviar mensagem",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 3000,
+        position: "top-end",
+      });
     }
-
-    await api.post("messages", { message });
-
-    setMessage("");
   }
 
   return (
