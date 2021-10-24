@@ -34,3 +34,5 @@ Elixir
 - Phoenix
 - Ecto
 - Quantum
+
+Milha extra: Adição da biblioteca SweetAlert2 para melhoramento de UI no que diz respeito a mensagens ao usuário.
